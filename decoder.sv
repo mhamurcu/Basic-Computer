@@ -1,0 +1,24 @@
+module decoder(
+    input [2:0]code,
+	 output reg [7:0] out
+    );
+reg [7:0]state ;
+	 always@*
+	 begin
+		
+		case(code)
+			3'h0 : state <= '{0,0,0,0,0,0,0,1};
+			3'h1 : state <= '{0,0,0,0,0,0,1,0};
+			3'h2 : state <= '{0,0,0,0,0,1,0,0};
+			3'h3 : state <= '{0,0,0,0,1,0,0,0};
+			3'h4 : state <= '{0,0,0,1,0,0,0,0};
+			3'h5 : state <= '{0,0,1,0,0,0,0,0};
+			3'h6 : state <= '{0,1,0,0,0,0,0,0};
+			3'h7 : state <= '{1,0,0,0,0,0,0,0};
+			
+			
+		endcase
+		
+	end	
+	assign out = state;
+endmodule
